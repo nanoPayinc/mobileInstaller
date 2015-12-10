@@ -8,6 +8,10 @@ var getQueryParams = function () {
   return queryObject;
 };
 
+var getAppName = function (urlData) {
+  return urlData.split('/')[0];
+};
+
 var openMobileApp = function () {
   var ua = navigator.userAgent;
   var params = getQueryParams();
@@ -21,7 +25,7 @@ var openMobileApp = function () {
   var isIOS = ua.match(/iPhone/i) || ua.match(/iPod/i) || ua.match(/iPad/i);
 
   if (isIOS) {
-    var appName = getAppName();
+    var appName = getAppName(urlData);
     urlData = urlData.replace(appName + '/', '')
 
     window.open(appName + '://' + urlData, '_self');
