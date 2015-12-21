@@ -17,6 +17,10 @@ var openMobileApp = function () {
   var params = getQueryParams();
   var urlData = window.location.href.split(window.location.host + '/')[1];
 
+  var debug = document.getElementById('debug');
+
+  debug.innerHTML = 'URL: ' + window.location.href + '<br /><br />' + 'UA: ' + ua;
+
   if (ua.match(/Android/i)) {
     window.open(window.location.href, '_self');
     return;
