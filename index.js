@@ -28,7 +28,7 @@ var openMobileApp = function () {
     var appName = getAppName(urlData);
     urlData = urlData.replace(appName + '/', '')
 
-    window.open(appName + '://' + urlData, '_self');
+    window.open(appName + '://', '_self');
     return;
   }
 };
