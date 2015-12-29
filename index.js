@@ -32,7 +32,7 @@ var openMobileApp = function () {
     var appName = getAppName(urlData);
     urlData = urlData.replace(appName + '/', '')
 
-    window.open(appName + '://', '_self');
+    window.open(appName + '://' + urlData, '_self');
     return;
   }
 };
