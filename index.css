@@ -19,6 +19,7 @@ body, div {
 }
 
 .message img {
+  max-width: 160px;
   margin-bottom: 20px;
 }
 
