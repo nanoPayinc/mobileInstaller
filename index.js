@@ -18,7 +18,9 @@ var openMobileApp = function () {
   var urlData = window.location.href.split(window.location.host + '/')[1];
 
   if (ua.match(/Android/i)) {
-    window.open(window.location.href, '_self');
+    setTimeout(function () {
+      window.open(window.location.href, '_self');
+    }, 1000);
     return;
   }
 
@@ -28,7 +30,9 @@ var openMobileApp = function () {
     var appName = getAppName(urlData);
     urlData = urlData.replace(appName + '/', '')
 
-    window.open(appName + '://' + urlData, '_self');
+    setTimeout(function () {
+      window.open(appName + '://' + urlData, '_self');
+    }, 1000);
     return;
   }
 };
