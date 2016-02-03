@@ -21,14 +21,14 @@ var openMobileApp = function () {
   var nanopay = document.getElementById('message');
   var mintchip = document.getElementById('message2');
 
-  if (appName === 'readygo') {
-    nanopay.style.display = 'block';
-    document.title = 'nanoPay™';
-    mintchip.style.display = 'none';
-  } else if (appName === 'mintchip') {
+  if (appName === 'mintchip') {
     nanopay.style.display = 'none';
     document.title = 'MintChip™';
     mintchip.style.display = 'block';
+  } else {
+    nanopay.style.display = 'block';
+    document.title = 'nanoPay™';
+    mintchip.style.display = 'none';
   }
 
   if (ua.match(/Android/i)) {
