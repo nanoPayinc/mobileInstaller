@@ -13,23 +13,23 @@ var getAppName = function (urlData) {
 };
 
 var openMobileApp = function () {
-  if (getAppName(window.location.href) === 'readygo') {
-    var nanopay = document.getElementById('message');
-    nanopay.style.display = 'block';
-    document.title = 'nanoPay™';
-    var mintchip = document.getElementById('message2');
-    mintchip.style.display = 'none';
-  }
-  else if (getAppName(window.location.href) === 'mintchip') {
-    var nanopay = document.getElementById('message');
-    nanopay.style.display = 'none';
-    document.title = 'MintChip™';
-    var mintchip = document.getElementById('message2');
-    mintchip.style.display = 'block';
-  }
   var ua = navigator.userAgent;
   var params = getQueryParams();
   var urlData = window.location.href.split(window.location.host + '/')[1];
+  var appName = getAppName(urlData);
+
+  var nanopay = document.getElementById('message');
+  var mintchip = document.getElementById('message2');
+
+  if (appName === 'readygo') {
+    nanopay.style.display = 'block';
+    document.title = 'nanoPay™';
+    mintchip.style.display = 'none';
+  } else if (appName === 'mintchip') {
+    nanopay.style.display = 'none';
+    document.title = 'MintChip™';
+    mintchip.style.display = 'block';
+  }
 
   if (ua.match(/Android/i)) {
     setTimeout(function () {
@@ -41,7 +41,6 @@ var openMobileApp = function () {
   var isIOS = ua.match(/iPhone/i) || ua.match(/iPod/i) || ua.match(/iPad/i);
 
   if (isIOS) {
-    var appName = getAppName(urlData);
     urlData = urlData.replace(appName + '/', '')
 
     setTimeout(function () {
