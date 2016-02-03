@@ -13,14 +13,14 @@ var getAppName = function (urlData) {
 };
 
 var openMobileApp = function () {
-  if (window.location.href === 'readygo') {
+  if (getAppName(window.location.href) === 'readygo') {
     var nanopay = document.getElementById('message');
     nanopay.style.display = 'block';
     document.title = 'nanoPay™';
     var mintchip = document.getElementById('message2');
     mintchip.style.display = 'none';
   }
-  else if (window.location.href === 'mintchip') {
+  else if (getAppName(window.location.href) === 'mintchip') {
     var nanopay = document.getElementById('message');
     nanopay.style.display = 'none';
     document.title = 'MintChip™';
