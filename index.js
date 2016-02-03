@@ -1,4 +1,4 @@
-var getQueryParams = function () {
+ var getQueryParams = function () {
   var queryObject = {};
 
   window.location.search.substr(1).split('&').forEach(function (item) {
@@ -13,6 +13,20 @@ var getAppName = function (urlData) {
 };
 
 var openMobileApp = function () {
+  if (window.location.href === 'readygo') {
+    var nanopay = document.getElementById('message');
+    nanopay.style.display = 'block';
+    document.title = 'nanoPay™';
+    var mintchip = document.getElementById('message2');
+    mintchip.style.display = 'none';
+  }
+  else if (window.location.href === 'mintchip') {
+    var nanopay = document.getElementById('message');
+    nanopay.style.display = 'none';
+    document.title = 'MintChip™';
+    var mintchip = document.getElementById('message2');
+    mintchip.style.display = 'block';
+  }
   var ua = navigator.userAgent;
   var params = getQueryParams();
   var urlData = window.location.href.split(window.location.host + '/')[1];
@@ -38,3 +52,4 @@ var openMobileApp = function () {
 };
 
 window.onload = openMobileApp;
+
