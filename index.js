@@ -1,10 +1,8 @@
  var getQueryParams = function () {
   var queryObject = {};
-
   window.location.search.substr(1).split('&').forEach(function (item) {
     queryObject[item.split('=')[0]] = item.split('=')[1];
   });
-
   return queryObject;
 };
 
@@ -23,9 +21,9 @@ var openAppOrWebpage = function () {
   var appName = getAppName(urlData);
   var mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
   var message = '';
+  var key = Object.keys(params)[0];
   
-  if(!(Object.keys(params).length === 0 && params.constructor === Object)) {
-    console.log('Not empty object', Object.keys(params));
+  if(!(isEmpty(key) && isEmpty(params.key))) {
     message = decodeURIComponent(params.message);
   }
   
