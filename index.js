@@ -36,26 +36,37 @@ var openAppOrWebpage = function () {
     nanopay.style.display = 'none';
     document.title = 'MintChip™';
     mintchip.style.display = 'block';
+    mintchip.setAttribute('class', 'shown');
     if(!(isEmpty(message))) {
       error.getElementsByTagName("p")[0].innerHTML = message;
       error.getElementsByTagName('img')[0].src = '/mintchip-logo.png';
       mintchip.style.display = 'none';
       error.style.display = 'block';
+      mintchip.removeAttribute('class');
+      error.setAttribute('class', 'shown');
     }
   } else {
     nanopay.style.display = 'block';
     document.title = 'nanoPay™';
     mintchip.style.display = 'none';
+    nanopay.setAttribute('class', 'shown');
     if(!(isEmpty(message))) {
       error.getElementsByTagName("p")[0].innerHTML = message; 
       error.getElementsByTagName("p")[0].style.color = '#9e0b39';
       error.getElementsByTagName('img')[0].src = '/nanopay_logo.png';
       nanopay.style.display = 'none';
       error.style.display = 'block';
+      nanopay.removeAttribute('class');
+      error.setAttribute('class', 'shown');
     }
   }
   
   if( !mobileRegex.test(ua) ) {
+    if(isEmpty(message)) {
+      var elem = document.getElementsByClassName('shown')[0];
+      elem.getElementsByTagName('p')[0].innerHTML = 'Please open the mobile app.';
+      return;
+    }
     return;
   }
 
