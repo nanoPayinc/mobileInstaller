@@ -1,14 +1,19 @@
-/* MintChip™ 2016 */
-body, div {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+
 }
 
-#message {
-  display: none;
-  width: 320px;
+body {
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.message {
+  max-width: 100%;
   text-align: center;
   position: absolute;
+  display: none;
   top: 45%;
   left: 50%;
   z-index: 1;
@@ -18,40 +23,20 @@ body, div {
   transform: translate(-50%, -50%);
 }
 
-#message2 {
-  display: none;
-  width: 320px;
-  text-align: center;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  z-index: 1;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-#message img {
-  max-width: 260px;
+.message-image {
+  width: 245px;
   margin-bottom: 20px;
 }
 
-#message2 img {
-  max-width: 260px;
-  margin-bottom: 20px;
+.message-text {
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
-#message2 p {
+.message--nanopay .message-text {
+  color: #9E0B39;
+}
+
+.message--mintchip .message-text {
   color: #2C4389;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-#message p {
-  color: #9e0b39;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  line-height: 1.5;
 }

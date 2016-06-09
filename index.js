@@ -18,16 +18,16 @@ var openMobileApp = function () {
   var urlData = window.location.href.split(window.location.host + '/')[1];
   var appName = getAppName(urlData);
 
-  var nanopay = document.getElementById('message');
-  var mintchip = document.getElementById('message2');
+  var nanopay = document.getElementById('messageNanopay');
+  var mintchip = document.getElementById('messageMintchip');
 
   if (appName === 'mintchip') {
     nanopay.style.display = 'none';
-    document.title = 'MintChip™';
+    document.title = 'MintChip';
     mintchip.style.display = 'block';
   } else {
     nanopay.style.display = 'block';
-    document.title = 'nanoPay™';
+    document.title = 'nanoPay';
     mintchip.style.display = 'none';
   }
 
@@ -51,4 +51,3 @@ var openMobileApp = function () {
 };
 
 window.onload = openMobileApp;
-
