@@ -1,4 +1,8 @@
- var getQueryParams = function () {
+'use strict';
+
+var appName = 'mintchip';
+
+var getQueryParams = function () {
   var queryObject = {};
 
   window.location.search.substr(1).split('&').forEach(function (item) {
@@ -8,28 +12,14 @@
   return queryObject;
 };
 
-var getAppName = function (urlData) {
-  return urlData.split('/')[0];
-};
-
 var openMobileApp = function () {
   var ua = navigator.userAgent;
   var params = getQueryParams();
   var urlData = window.location.href.split(window.location.host + '/')[1];
-  var appName = getAppName(urlData);
 
-  var nanopay = document.getElementById('messageNanopay');
   var mintchip = document.getElementById('messageMintchip');
-
-  if (appName === 'mintchip') {
-    nanopay.style.display = 'none';
-    document.title = 'MintChip';
-    mintchip.style.display = 'block';
-  } else {
-    nanopay.style.display = 'block';
-    document.title = 'nanoPay';
-    mintchip.style.display = 'none';
-  }
+  document.title = 'MintChip';
+  mintchip.style.display = 'block';
 
   if (ua.match(/Android/i)) {
     setTimeout(function () {
