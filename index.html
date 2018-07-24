@@ -5,7 +5,74 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="./index.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+      }
+
+      .message {
+        max-width: 100%;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: center;
+        position: absolute;
+        display: block;
+        top: 45%;
+        left: 50%;
+        z-index: 1;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+
+      .message--state {
+        display: block;
+      }
+
+      .message-title {
+        font-size: 2rem;
+        margin-top: 50px;
+        color: #333;
+        font-weight: 500;
+      }
+
+      .message-description {
+        font-size: 1.25rem;
+        line-height: 2rem;
+        margin-top: 10px;
+        color: #999;
+        font-weight: 300;
+      }
+
+      .message-image {
+        width: 245px;
+        margin-bottom: 20px;
+      }
+
+      .message-text {
+        font-size: 1.25rem;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.5;
+      }
+
+      .message--nanopay .message-text {
+        color: #9E0B39;
+      }
+
+      .message--mintchip .message-text {
+        color: #2C4389;
+      }
+    </style>
   </head>
 
   <body>
@@ -38,6 +105,47 @@
       <p class="message-text">Launching the MintChip mobile app...</p>
     </article>
 
-    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript">
+      var appName = 'mintchip';
+
+      var getQueryParams = function () {
+        var queryObject = {};
+
+        window.location.search.substr(1).split('&').forEach(function (item) {
+          queryObject[item.split('=')[0]] = item.split('=')[1];
+        });
+
+        return queryObject;
+      };
+
+      var openMobileApp = function () {
+        var ua = navigator.userAgent;
+        var params = getQueryParams();
+        var urlData = window.location.href.split(window.location.host + '/')[1];
+
+        var mintchip = document.getElementById('messageMintchip');
+        document.title = 'MintChip';
+        mintchip.style.display = 'block';
+
+        if (ua.match(/Android/i)) {
+          setTimeout(function () {
+            window.open(window.location.href, '_self');
+          }, 1000);
+          return;
+        }
+
+        var isIOS = ua.match(/iPhone/i) || ua.match(/iPod/i) || ua.match(/iPad/i);
+
+        if (isIOS) {
+          urlData = urlData.replace(appName + '/', '')
+          setTimeout(function () {
+            window.open(appName + '://' + urlData, '_self');
+          }, 1000);
+          return;
+        }
+      };
+
+      window.onload = openMobileApp;
+    </script>
   </body>
 </html>
